@@ -1,6 +1,7 @@
 package com.example.mdroof.cbooks;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -45,6 +49,8 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+
     }
 
     @Override
@@ -112,6 +118,9 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+    /*********************************************************************************/
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -121,6 +130,9 @@ public class MainActivity extends ActionBarActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+
+        ProgressDialog mProgress;
+        WebView webview;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -141,6 +153,32 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
+            //webview code
+            webview = (WebView)rootView.findViewById(R.id.webView);
+            WebSettings settings = webview.getSettings();
+            settings.setJavaScriptEnabled(true);
+
+            webview.loadUrl(getString(R.string.home_page));
+            /*
+            webview.setWebViewClient(new WebViewClient() {
+
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;
+                }
+
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    if (mProgress.isShowing()) {
+                        mProgress.dismiss();
+                    }
+                }
+            });*/
+
             return rootView;
         }
 
