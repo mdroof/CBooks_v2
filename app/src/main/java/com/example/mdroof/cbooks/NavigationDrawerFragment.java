@@ -17,6 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -29,6 +31,8 @@ import android.widget.Toast;
  */
 public class NavigationDrawerFragment extends Fragment {
 
+    WebView webview;
+    WebViewClient wvc;
     /**
      * Remember the position of the selected item.
      */
@@ -102,11 +106,11 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                        "Donate",
-                        "About",
+                        getString(R.string.home_url),
+                        getString(R.string.search_url),
+                        getString(R.string.alerts_url),
+                        getString(R.string.donate_url),
+                        getString(R.string.about_url),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -194,6 +198,27 @@ public class NavigationDrawerFragment extends Fragment {
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
+            webview = (WebView)getActivity().findViewById(R.id.webView);
+
+            switch (position) {
+                case 1:
+                    webview.loadUrl(getString(R.string.home_url));
+
+                    break;
+                case 2:
+                    webview.loadUrl(getString(R.string.search_url));
+                    break;
+                case 3:
+                    webview.loadUrl(getString(R.string.alerts_url));
+                    break;
+                case 4:
+                    webview.loadUrl(getString(R.string.donate_url));
+                    break;
+                case 5:
+                    webview.loadUrl(getString(R.string.about_url));
+                    break;
+            }
+
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

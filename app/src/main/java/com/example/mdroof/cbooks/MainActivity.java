@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -160,10 +161,10 @@ public class MainActivity extends ActionBarActivity
             WebSettings settings = webview.getSettings();
             settings.setJavaScriptEnabled(true);
 
-            webview.loadUrl(getString(R.string.home_page));
-            /*
-            webview.setWebViewClient(new WebViewClient() {
 
+
+            webview.setWebViewClient(new WebViewClient() {
+                /*
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
                     view.loadUrl(url);
@@ -176,9 +177,11 @@ public class MainActivity extends ActionBarActivity
                     if (mProgress.isShowing()) {
                         mProgress.dismiss();
                     }
-                }
-            });*/
-
+                    Log.v("MyActivity - AfterLoad", view.getUrl());
+                }*/
+            });
+            webview.loadUrl(getString(R.string.home_url));
+            Log.v("MyActivity", webview.getUrl());
             return rootView;
         }
 

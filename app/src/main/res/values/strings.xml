@@ -15,10 +15,10 @@
     <string name="action_settings">Settings</string>
 
     <!--Webview Drawer URLs -->
-    <string name="home_page">http://cardinalbooks.org</string>
-    <string name="search_page">http://cardinalbooks.org/index.php?page=search</string>
-    <string name="alerts">http://cardinalbooks.org/index.php?page=user&amp;action=alerts</string>
-    <string name="donate">http://cardinalbooks.org/index.php?page=page&amp;id=31</string>
-    <string name="about">http://cardinalbooks.org/index.php?page=page&amp;id=25</string>
+    <string name="home_url">http://cardinalbooks.org</string>
+    <string name="search_url">http://cardinalbooks.org/index.php?page=search</string>
+    <string name="alerts_url">http://cardinalbooks.org/index.php?page=user&amp;action=alerts</string>
+    <string name="donate_url">http://cardinalbooks.org/index.php?page=page&amp;id=31</string>
+    <string name="about_url">http://cardinalbooks.org/index.php?page=page&amp;id=25</string>
 
 </resources>
